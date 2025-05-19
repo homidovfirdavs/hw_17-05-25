@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class BookController : Controller
+public class BookController(IBookService _bookService) : Controller
 {
- private readonly BookService _bookService = new BookService();
- 
- [HttpGet("getall")]
+    [HttpGet("getall")]
  public async Task<List<Book>> GetBooksAsync()
  {
      var result =  await _bookService.GetBooksAsync();

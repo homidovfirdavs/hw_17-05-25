@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class MemberController : Controller
+public class MemberController(IMemberService _memberService) : Controller
 { 
-    private readonly MemberService _memberService = new MemberService();
+    
     
  [HttpGet("getall")]
  public async Task<List<Member>> GetMembersAsync()

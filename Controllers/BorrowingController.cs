@@ -1,14 +1,14 @@
 ﻿using Domain.Entities;
+using Infrastructure.Interface;
 using Infrastructure.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class BorrowingController : Controller
+public class BorrowingController(IBorrowingService _borrowingService ) : Controller
 {
-    private readonly BorrowingService _borrowingService = new BorrowingService();
-
+    
     [HttpGet("getall")]
     public async Task<List<Borrowing>> GetBorrowingsAsync()
     {
